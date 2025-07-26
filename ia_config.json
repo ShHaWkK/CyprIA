@@ -1,0 +1,12 @@
+{
+  "apps": {
+    "com.example.sample": {
+      "read": true,
+      "control": false
+    }
+  },
+  "system": {
+    "settings": true,
+    "notifications": true
+  }
+}
