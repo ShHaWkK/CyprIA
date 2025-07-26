@@ -1,20 +1,17 @@
-# Companion IA
+# Companion AI
 
-Companion IA est un copilote Android 100 % local capable d'exécuter des
-commandes vocales et de contrôler le téléphone sans connexion Internet.
-L'objectif est de proposer une solution simple et respectueuse de la vie
-privée.
+Companion AI is a 100% local Android co-pilot capable of executing voice commands and controlling the phone without an Internet connection. The goal is to offer a simple and privacy-respecting solution.
 
-## Fonctionnalités principales
+## Main Features
 
-- Activation vocale via un mot-clé personnalisé (ex. « Ok Companion »)
-- Transcription offline grâce à Whisper.cpp
-- Traitement des commandes par un modèle LLM embarqué
-- Lecture d'écran et reconnaissance d'éléments via OCR et computer vision
-- Contrôle des applications et du système (shell ou API Accessibilité)
-- Gestion dynamique des permissions dans `ia_config.json`
+- Voice activation via a custom wake word (e.g., "Ok Companion")  
+- Offline transcription powered by Whisper.cpp  
+- Command processing by an embedded LLM model  
+- Screen reading and element recognition using OCR and computer vision  
+- Application and system control (via shell or Accessibility API)  
+- Dynamic permission management through `ia_config.json`  
 
-## Arborescence
+## Project Structure
 
 ```
 app/
@@ -33,8 +30,7 @@ ia_config.json
 
 ## Aperçu du code
 
-`MainActivity.kt` présente une interface Compose permettant de démarrer le service
-et d'accéder à l'écran de gestion des permissions :
+`MainActivity.kt` provides a Compose interface to start the service and access the permissions management screen:
 
 ```kotlin
 Button(onClick = {
@@ -51,21 +47,20 @@ Button(onClick = {
 clé (`WakeWordDetector`) déclenche la transcription (à terme via Whisper.cpp).
 Les commandes textuelles sont ensuite interprétées par `CommandProcessor`.
 
-## Lancer le projet
 
-1. Ouvrir le dossier dans Android Studio.
-2. Laisser Gradle télécharger les dépendances (connexion initiale requise).
-3. Compiler et exécuter sur un appareil Android (minSdk 26).
-4. Appuyer sur le bouton « Start » pour activer l'assistant.
+`CompanionService.kt` handles local voice recognition. A wake word detector (`WakeWordDetector`) triggers transcription (eventually via Whisper.cpp). Text commands are then processed by `CommandProcessor`.
 
-## Configuration des permissions
+## How to Run the Project
 
-Le fichier `ia_config.json` permet de définir les applications ou fonctionnalités
-que l'IA peut lire ou contrôler. Ce fichier est chargé au démarrage par
-`PermissionManager`.
-Un écran dédié dans l'application permet de modifier ces droits via des
-cases à cocher pour chaque application.
+1. Open the folder in Android Studio.  
+2. Let Gradle download dependencies (initial internet connection required).  
+3. Build and run on an Android device (minSdk 26).  
+4. Press the "Start" button to activate the assistant.
 
-## Licence
+## Permission Configuration
 
+The `ia_config.json` file defines which apps or features the AI can read or control. This file is loaded at startup by `PermissionManager`.  
+A dedicated screen in the app allows modifying these rights via checkboxes for each application.
+
+## License
 MIT
